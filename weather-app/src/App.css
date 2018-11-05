@@ -1,0 +1,38 @@
+button{
+    background: red;
+    color: yellow;
+    border: none;
+    padding:10px;
+    transition: all 0.3s ease-out;
+}
+button:hover{
+    background: rgb(255, 174, 0);
+    transition: all 0.3s ease-out;
+}
+.container{
+    background: rgb(58, 93, 145);
+}
+.title-container{
+    background: url('sky.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    height: 400px;
+    width: 400px;
+    color: azure;
+}
+input[type=text]{
+    padding:7px;
+    /* border-radius: 3px; */
+    
+}
+input[type=text]:hover{
+    background: yellowgreen;
+}
+p{
+    color: rgb(168, 168, 168);
+}
+p:hover{
+    color: white;
+    transition: all 0.1s ease-out;
+}
