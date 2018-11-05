@@ -19,20 +19,33 @@ class App extends React.Component{
     e.preventDefault();
     const city=e.target.city.value;
     const country=e.target.country.value;
-    try{
-      let api_call = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&APPID=7e3f100c20c2fef0667201c853ba20f0&units=metric`);
-      let data= await api_call.json();
-      console.log(data);
+    if(city && country)
+    {
+      try{
+        let api_call = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&APPID=7e3f100c20c2fef0667201c853ba20f0&units=metric`);
+        let data= await api_call.json();
+        console.log(data);
+        this.setState({
+          temperature: data.list[0].main.temp,
+          city: data.city.name,
+          country: data.city.country,
+          humidity: data.list[0].main.humidity,
+          description: 'Something',
+          error: 'Successfully fetched data'
+        });
+      }catch(error){
+        console.error(error);
+      }
+    }
+    else{
       this.setState({
-        temperature: data.list[0].main.temp,
-        city: data.city.name,
-        country: data.city.country,
-        humidity: data.list[0].main.humidity,
-        description: 'Something',
-        error: 'Error ;)'
+        temperature: undefined,
+        city: undefined,
+        country: undefined,
+        humidity: undefined,
+        description: undefined,
+        error: 'Please enter the values correctly'
       });
-    }catch(error){
-      console.error(error);
     }
   }
   render(){
@@ -40,7 +53,12 @@ class App extends React.Component{
       <div>
         <Titles/>
         <Form getWeather={this.getWeather}/>
-        <Weather/>
+        <Weather 
+        temperature={this.state.temperature}
+        city={this.state.city}
+        country={this.state.country}
+        error={this.state.error}
+        />
       </div>
     );
   }
