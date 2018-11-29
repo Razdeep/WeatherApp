@@ -5,7 +5,7 @@ import Weather from './components/Weather';
 import Navigate from './components/Navigate';
 
 const API_KEY='7e3f100c20c2fef0667201c853ba20f0';
-const SAMPLE_API_URL='http://api.openweathermap.org/data/2.5/forecast?q=kolkata,india&APPID=7e3f100c20c2fef0667201c853ba20f0&units=metric';
+const SAMPLE_API_URL='https://api.openweathermap.org/data/2.5/forecast?q=kolkata,india&APPID=7e3f100c20c2fef0667201c853ba20f0&units=metric';
 
 class App extends React.Component{
   state = {
@@ -23,7 +23,7 @@ class App extends React.Component{
     if(city && country)
     {
       try{
-        let api_call = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&APPID=7e3f100c20c2fef0667201c853ba20f0&units=metric`);
+        let api_call = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&APPID=7e3f100c20c2fef0667201c853ba20f0&units=metric`);
         let data= await api_call.json();
         console.log(data);
         this.setState({
